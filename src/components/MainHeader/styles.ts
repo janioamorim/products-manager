@@ -5,10 +5,13 @@ export const Container = styled.div`
     
     background-color: #1C2A34;    
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 20px;
     border-bottom: 1px solid #CCC;
+    color: #FFF;
+`;
+export const Profile = styled.div`
     color: #FFF;
 `;
 
