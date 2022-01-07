@@ -6,16 +6,16 @@ import {
 }  from './styles';
 
 interface IContentHeaderProps {
-    title: string;
-    children: React.ReactNode;
+    title: string;    
 }
 
 const ContentHeader: React.FC<IContentHeaderProps> = ({
-    title, children
+    title
 }) => (
     <Container>
         <TitleContainer>
-            <h1>{title}</h1>                
+            <h1>{title}</h1>
+            {title === "Produtos" ? <a href='/newregister'>Novo</a> : null}            
         </TitleContainer>
     </Container>
 );

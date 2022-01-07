@@ -9,4 +9,17 @@ export const Container = styled.div`
     height: calc(100vh - 70px); 
     overflow-y: scroll;
 
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #235d87;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #1C2A23;
+    }
+
 `;

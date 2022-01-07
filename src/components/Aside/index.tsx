@@ -5,7 +5,8 @@ import logoImg from '../../assets/logo.svg';
 import {
     ImHome,
     ImUsers,
-    ImExit
+    ImExit,
+    ImCart
 } from 'react-icons/im';
 
 import { 
@@ -31,10 +32,15 @@ const Aside: React.FC = () => {
             <MenuContainer>
                 <MenuItemLink href="/">
                     <ImHome />
-                    Home
+                    Início
                 </MenuItemLink>
 
-                <MenuItemLink href="/list/entry-balance">
+                <MenuItemLink href="/list/products">
+                    <ImCart />
+                    Produtos
+                </MenuItemLink>
+
+                <MenuItemLink href="/list/users">
                     <ImUsers />
                     Usuários
                 </MenuItemLink>                
