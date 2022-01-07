@@ -35,5 +35,30 @@ export const InputText = styled.input`
     padding: 20px;
     height: 50px;
 `;
+export const InputSelect = styled.select`
+    background-color: #FFF;
+    border-radius: 20px;
+    padding: 10px;
+    height: 50px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+`;
+export const ButtonSubmit = styled.button`
+    background-color: #073a50;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    padding: 15px;
+    margin-top: 15px;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 500;
+
+    &:hover {
+        opacity: .7;        
+    }
+    
+`;
+
 
 

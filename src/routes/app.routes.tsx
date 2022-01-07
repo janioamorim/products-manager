@@ -12,6 +12,7 @@ const AppRoutes: React.FC = () => (
             <Route path="/" exact component={Home} />
             <Route path="/newregister" component={FormProduct} />
             <Route path="/list/:type" component={List} />            
+            <Route path="/editproduct/:id" component={FormProduct} />            
         </Switch>
     </Layout>
 );

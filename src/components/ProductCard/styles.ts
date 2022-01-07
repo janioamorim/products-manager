@@ -25,8 +25,7 @@ export const Container = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    cursor: pointer;
+    
     transition: all .3s;
     position: relative;
 
@@ -37,22 +36,38 @@ export const Container = styled.li`
         transform: translateX(10px);
     }
 
-
-    > div {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;    
-
-        padding-left: 10px;    
-    }
-
-    > div span {
-        font-size: 22px;
-        font-weight: 500;
-    }
+    > div 
     > h3{
         margin-right: 20px;
     } 
 
     
 `;
+
+export const ActionButtons = styled.div`    
+    flex-direction: column;   
+    
+    button{
+        background-color: transparent;
+    }
+    svg{
+        width: 25px;
+        height: 25px;
+        margin: 0 10px
+    }
+    
+`;
+export const ContainerInfor = styled.div`    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 10px;
+    
+        span {
+            font-size: 22px;
+            font-weight: 500;
+        }
+        
+`;
+
+

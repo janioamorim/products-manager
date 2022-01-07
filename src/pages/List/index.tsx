@@ -5,6 +5,7 @@ import ProductCard from '../../components/ProductCard';
 
 import DataService from "../../services/products.service";
 import formatCurrency from '../../utils/formatCurrency';
+import { useHistory } from 'react-router-dom';
 
 import { 
     Container, 
@@ -38,6 +39,7 @@ interface IUsers {
 const List: React.FC<IRouteParams> = ({match}) => {
     const [products, setProducts] = useState<IProduct[]>([]);
     const [users, setUsers] = useState<IUsers[]>([]);
+    const history = useHistory()
 
     const getAllProducts = async () => {
         const result = await DataService.getAllProducts();
@@ -66,6 +68,10 @@ const List: React.FC<IRouteParams> = ({match}) => {
         }
          
     },[type]);
+
+    function editProduct (id: number){
+        history.push(`/editproduct/${id}`)
+    }
   
 
     return (
@@ -80,7 +86,8 @@ const List: React.FC<IRouteParams> = ({match}) => {
                     name={item.name} 
                     price={formatCurrency(Number(item.price))} 
                     packaging={item.packaging} 
-                    quantity={item.quantity}/>
+                    quantity={item.quantity}
+                    onpress={()=>editProduct(item.id)}/>
                 ))}
                 
             </Content>
