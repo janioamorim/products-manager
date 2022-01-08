@@ -45,6 +45,15 @@ export const editProduct = async (id: string, bodyProduct: any) => {
   }
 };
 
+export const deleteProduct = async (id: number) => {
+  try {
+    const result = await Api.delete(`/products/${id}`);       
+    return result;
+  } catch (err) {
+    throw err;
+  }
+};
+
 
 
 
@@ -54,4 +63,5 @@ export default {
   postProduct: postProduct,  
   findProduct: findProduct,  
   editProduct: editProduct,  
+  deleteProduct: deleteProduct,  
 };

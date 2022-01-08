@@ -2,8 +2,13 @@ import React from 'react';
 
 import { 
     Container,
-    TitleContainer, 
+    TitleContainer,
+    LinkNovo
 }  from './styles';
+
+import {
+    FaPlus
+} from 'react-icons/fa';
 
 interface IContentHeaderProps {
     title: string;    
@@ -14,9 +19,10 @@ const ContentHeader: React.FC<IContentHeaderProps> = ({
 }) => (
     <Container>
         <TitleContainer>
-            <h1>{title}</h1>
-            {title === "Produtos" ? <a href='/newregister'>Novo</a> : null}            
+            <h1>{title}</h1>                        
         </TitleContainer>
+        {title === "Produtos" ? <LinkNovo href='/newregister'><FaPlus/>NOVO</LinkNovo> : null}
+
     </Container>
 );
 

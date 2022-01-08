@@ -1,10 +1,31 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-export const Container = styled.div``;
+const animate = keyframes`
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    50%{
+        opacity: .3;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+`;
+
+
+export const Container = styled.div`
+
+
+`;
 
 export const Content = styled.div`
     display: flex;    
-    justify-content: center;    
+    justify-content: center;
+    transition: all .3s;
+   
+   animation: ${animate} .9s ease;  
 `;
 
 export const Form = styled.form`
@@ -24,6 +45,12 @@ export const InputField = styled.div`
     width: 100%;
     flex-direction: column;
     margin: 5px 0;
+    span{
+        font-size: 18px;
+        color: #f91a1a;
+        font-style: italic;
+        margin: 7px 0 0 5px;
+    }
 `;
 export const Label = styled.label`
     font-size: 15px;
@@ -34,12 +61,16 @@ export const InputText = styled.input`
     border-radius: 20px;
     padding: 20px;
     height: 50px;
+    color: #424242;
+    font-size: 18px;
 `;
 export const InputSelect = styled.select`
     background-color: #FFF;
     border-radius: 20px;
     padding: 10px;
     height: 50px;
+    color: #424242;
+    font-size: 18px;
 
     -webkit-appearance: none;
     -moz-appearance: none;

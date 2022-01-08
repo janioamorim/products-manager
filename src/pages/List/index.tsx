@@ -1,23 +1,24 @@
-import React, { useMemo } from 'react';
-import { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import ContentHeader from '../../components/ContentHeader';
 import ProductCard from '../../components/ProductCard';
 
 import DataService from "../../services/products.service";
-import formatCurrency from '../../utils/formatCurrency';
 import { useHistory } from 'react-router-dom';
 
 import { 
     Container, 
     Content
 } from './styles';
+import { ModalAlert } from '../../components/ModalAlert';
 
 interface IRouteParams {
     match: {
         params: {
             type: string;
         }
-    }
+        
+    },
+    setModal: any;
 }
 
 interface IProduct {
@@ -36,10 +37,12 @@ interface IUsers {
 
 
 
-const List: React.FC<IRouteParams> = ({match}) => {
+const List: React.FC<IRouteParams> = ({match, setModal}) => {
     const [products, setProducts] = useState<IProduct[]>([]);
     const [users, setUsers] = useState<IUsers[]>([]);
-    const history = useHistory()
+    const history = useHistory();
+    const [showModal, setShowModal] = useState(false);
+    const [idProduct, setIdProduct] = useState<number>(0);
 
     const getAllProducts = async () => {
         const result = await DataService.getAllProducts();
@@ -53,6 +56,19 @@ const List: React.FC<IRouteParams> = ({match}) => {
     
 
     const {type} = match.params;
+
+    const openModal = (id: number) => {
+        setShowModal(true);
+        setIdProduct(id)              
+
+    }
+
+    const deleteProduct = async () => {
+        const result = await DataService.deleteProduct(idProduct);
+        getAllProducts();
+        setShowModal(false);
+
+    }
 
     const pageData = useMemo(() => {
         return type === 'products' ? 
@@ -72,26 +88,30 @@ const List: React.FC<IRouteParams> = ({match}) => {
     function editProduct (id: number){
         history.push(`/editproduct/${id}`)
     }
-  
+    
 
     return (
         <Container>
-            <ContentHeader title={pageData.title}>            
-            </ContentHeader>
+            <ContentHeader title={pageData.title}/>           
 
             <Content>
                 {products.map(item =>(
                     <ProductCard 
                     key={item.id} 
                     name={item.name} 
-                    price={formatCurrency(Number(item.price))} 
+                    price={item.price} 
                     packaging={item.packaging} 
                     quantity={item.quantity}
-                    onpress={()=>editProduct(item.id)}/>
+                    onpressEdit={()=>editProduct(item.id)}
+                    onpressDelete={()=>openModal(item.id)}/>
                 ))}
                 
             </Content>
-            
+            {showModal ? 
+                <ModalAlert setShowModal={setShowModal} deleteProduct={()=>deleteProduct()}/>
+                :
+                null
+            }
         </Container>
     );
 }

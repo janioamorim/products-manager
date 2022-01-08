@@ -17,7 +17,8 @@ interface IProductCardProps {
     price: string;
     packaging: string;
     quantity: number;
-    onpress: any;
+    onpressEdit: any;
+    onpressDelete: any;
 }
 
 const ProductCard: React.FC<IProductCardProps> = ({
@@ -25,7 +26,8 @@ const ProductCard: React.FC<IProductCardProps> = ({
     price,
     packaging,
     quantity,
-    onpress,
+    onpressEdit,
+    onpressDelete
 }) => (
     
     <Container>
@@ -34,11 +36,11 @@ const ProductCard: React.FC<IProductCardProps> = ({
             <span>{name}</span>
             <small>{packaging}</small>
             <small>Quantidade: {quantity}</small>
-            <h3>Preço: {price}</h3>
+            <h3>Preço: R$ {price}</h3>
         </ContainerInfor>
         <ActionButtons>
-            <button onClick={onpress}><FaRegEdit fill='#ce9909'/></button>
-            <button><FaTrashAlt fill='#ec3131'/></button>
+            <button onClick={onpressEdit}><FaRegEdit fill='#ce9909'/></button>
+            <button onClick={onpressDelete}><FaTrashAlt fill='#ec3131'/></button>
         </ActionButtons>      
     </Container>
 );

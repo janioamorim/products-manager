@@ -22,3 +22,19 @@ export const TitleContainer = styled.div`
 
 
 `;
+
+export const LinkNovo = styled.a`
+    text-decoration: none;
+    color: #FFF;
+    background-color: #2a4c30;
+    padding: 15px;
+    width: 150px;
+    text-align: center;
+    font-weight: 500;
+    &:hover {
+        opacity: .7;       
+    }   
+    svg{
+        margin-right: 15px;
+    }
+`;

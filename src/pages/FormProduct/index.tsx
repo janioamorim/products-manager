@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import ContentHeader from "../../components/ContentHeader";
 import { useHistory, useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import formatCurrency from '../../utils/formatCurrency';
 
 import { 
     Container,
@@ -20,6 +22,7 @@ interface IModelProduct {
     price: string;
     packaging: string;
     quantity: number;
+    errors: string
 
 }
 
@@ -30,8 +33,12 @@ const FormProduct: React.FC = () => {
         name: '',
         price: '',
         packaging: '',
-        quantity: 0
+        quantity: 0,
+        errors: ''
     });
+
+    const {register, handleSubmit,formState: { errors }  } = useForm<IModelProduct>()
+    
     function updateModel (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>){                
         setModelProduct({
             ...modelProduct,
@@ -39,16 +46,13 @@ const FormProduct: React.FC = () => {
         })
     }
 
-    async function onSubmit(e: ChangeEvent<HTMLFormElement>){
-        e.preventDefault();
-        
+    async function saveProduct(data: IModelProduct){        
         if(id !== undefined){
-            const resultEdit = await DataService.editProduct(id, modelProduct);            
+            const resultEdit = await DataService.editProduct(id, data);            
         }else{
-            const resultPost = await DataService.postProduct(modelProduct);
+            const resultPost = await DataService.postProduct(data);
         }
-       history.goBack();
-      
+       history.push('/list/products');      
     }
 
     async function findProduct(id:string){        
@@ -61,7 +65,11 @@ const FormProduct: React.FC = () => {
         if(id !== undefined){
             findProduct(id)
         }
-    },[id])
+    },[id]);
+
+    const onSubmit = handleSubmit((data) => {
+        saveProduct(data)
+    });
 
     return (
         <Container>
@@ -72,37 +80,43 @@ const FormProduct: React.FC = () => {
                         <Label>Nome</Label>
                         <InputText 
                         type="text" 
-                        name="name" 
+                        
                         value={modelProduct.name}
+                        {...register('name', { required: true })}
                         onChange={(e: ChangeEvent<HTMLInputElement>)=> updateModel(e)}/>
+                        {errors?.name && <span>*Nome Obrigatório</span>}
                     </InputField>
                     <InputField >
                         <Label>Embalagem</Label>
-                        <InputSelect 
-                            name="packaging"
+                        <InputSelect                            
+                            {...register("packaging", { required: true })}
                             value={modelProduct.packaging}
                             onChange={(e: ChangeEvent<HTMLSelectElement>)=> updateModel(e)} >
+                            <option value="">Escolha uma opção</option>
                             <option value="Caixa">Caixa</option>
                             <option value="Pacote">Pacote</option>
                             <option value="Vidro">Vidro</option>
                             <option value="Saco">Saco</option>                            
-                        </InputSelect>                        
+                        </InputSelect>
+                        {errors?.packaging && <span>*Esolha uma opção</span>}                      
                     </InputField>
                     <InputField >
                         <Label>Preço</Label>
                         <InputText 
-                            type="number" 
-                            name="price"
-                            value={modelProduct.price}
-                            onChange={(e: ChangeEvent<HTMLInputElement>)=> updateModel(e)}/>                       
+                            type="text"
+                            {...register("price", { required: true })}
+                            value={formatCurrency(modelProduct.price)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>)=> updateModel(e)}/>
+                            {errors?.price && <span>*Preço obrigatório</span>}                 
                     </InputField>
                     <InputField >
                         <Label>Quantidade</Label>
                         <InputText 
-                            type="number" 
-                            name="quantity"
+                            type="text"   
+                            {...register("quantity", { required: true })}
                             value={modelProduct.quantity}
-                            onChange={(e: ChangeEvent<HTMLInputElement>)=> updateModel(e)}/>                       
+                            onChange={(e: ChangeEvent<HTMLInputElement>)=> updateModel(e)}/>
+                            {errors?.quantity && <span>*Quantidade obrigatória</span>}                   
                     </InputField>
                     <ButtonSubmit type="submit">Salvar</ButtonSubmit>
                 </Form>

@@ -13,25 +13,18 @@
   ],
   "products": [
     {
-      "name": "Feijão Preto",
-      "price": "12.5",
-      "packaging": "Saco",
-      "quantity": 50,
+      "name": "teste1 ",
+      "packaging": "Vidro",
+      "price": "25,53",
+      "quantity": "45",
       "id": 1
     },
     {
-      "name": "Leite Bom",
-      "price": "7.5",
-      "packaging": "Caixa",
-      "quantity": 30,
+      "name": "teste2 ",
+      "packaging": "Pacote",
+      "price": "22,00",
+      "quantity": "0",
       "id": 2
-    },
-    {
-      "name": "Macarrão",
-      "price": "5",
-      "packaging": "Vidro",
-      "quantity": "20",
-      "id": 3
     }
   ]
 }
