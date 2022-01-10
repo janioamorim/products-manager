@@ -9,10 +9,10 @@
   ],
   "products": [
     {
-      "quantity": "0",
+      "name": "teste2 ",
       "packaging": "Pacote",
       "price": "22,00",
-      "name": "teste2 ",
+      "quantity": "0",
       "id": 2
     },
     {

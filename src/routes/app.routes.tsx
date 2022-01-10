@@ -9,11 +9,11 @@ import List from '../pages/List';
 const AppRoutes: React.FC = () => (
     <Layout>        
         <Switch>
-            <Route path="*" component={Home} />            
             <Route path="/" exact component={Home} />
             <Route path="/newregister" component={FormProduct} />
             <Route path="/list/:type" component={List} />            
             <Route path="/editproduct/:id" component={FormProduct} />            
+            <Route path="*" component={Home} />            
         </Switch>
     </Layout>
 );
