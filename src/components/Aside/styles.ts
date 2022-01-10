@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface IContainerProps {
+    menuIsOpen: boolean;
+}
+
+export const Container = styled.div<IContainerProps>`
     grid-area: AS;  
     padding-left: 20px;
     position: relative;
@@ -9,6 +13,22 @@ export const Container = styled.div`
     padding-left: 20px;
     border-right: 1px solid #CCC;
     position: relative;
+
+    @media(max-width: 600px){
+        padding-left: 15px;
+        width: 200px;
+        position: fixed;
+        z-index: 2;
+        background-color: #1c2a34fc;
+
+        height: ${props => props.menuIsOpen ? '100vh' : '70px'};
+        overflow: hidden;
+
+        ${props => !props.menuIsOpen && css`
+            border: none;
+            border-bottom: 1px solid #CCC;
+        `};
+    }
 
 `;
 
@@ -85,5 +105,29 @@ export const MenuItemButton = styled.button`
     > svg {
         font-size: 20px;
         margin-right: 10px;
+    }
+`;
+export const ToggleMenu = styled.button`
+    width: 40px;
+    height: 40px;
+
+    border-radius: 5px;
+    font-size: 22px;
+    
+    background-color: #d5591e;
+    color: #FFF;
+
+    transition: opacity .3s;
+
+    &:hover{
+        opacity: 0.7;
+    }
+
+    display: none;
+
+    @media(max-width: 600px){
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 `;

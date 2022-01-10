@@ -9,15 +9,6 @@ export const getAllProducts = async () => {
   }
 };
 
-export const getAllUsers = async () => {
-  try {
-    const users = await Api.get(`/users`);
-    return users;
-  } catch (err) {
-    throw err;
-  }
-};
-
 export const findProduct = async (id: string) => {
   try {
     const result = await Api.get(`/products/${id}`,);       
@@ -55,13 +46,10 @@ export const deleteProduct = async (id: number) => {
 };
 
 
-
-
-export default {
-  getAllProducts: getAllProducts,  
-  getAllUsers: getAllUsers,  
-  postProduct: postProduct,  
-  findProduct: findProduct,  
-  editProduct: editProduct,  
-  deleteProduct: deleteProduct,  
+export const productService = {
+  getAllProducts,
+  postProduct,  
+  findProduct,  
+  editProduct,  
+  deleteProduct
 };

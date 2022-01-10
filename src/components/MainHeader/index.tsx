@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth } from '../../providers/auth';
 import { 
     Container, 
     Profile, 
@@ -7,12 +8,14 @@ import {
 }  from './styles';
 
 const MainHeader: React.FC = () => {
+    
+    const nameUser = localStorage.getItem('@name-user'); 
 
     return (
         <Container>           
             <Profile>
                 <Welcome>Olá</Welcome>
-                <UserName>Jânio Amorim</UserName>
+                <UserName>{nameUser}</UserName>
             </Profile>
         </Container>
     );

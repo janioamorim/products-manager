@@ -15,10 +15,7 @@ const animate = keyframes`
 `;
 
 
-export const Container = styled.div`
-
-
-`;
+export const Container = styled.div``;
 
 export const Content = styled.div`
     display: flex;    
@@ -37,6 +34,10 @@ export const Form = styled.form`
     padding: 30px;
     border-top-right-radius: 30px;
     border-bottom-left-radius: 30px;
+
+    @media(max-width: 600px){        
+        width: 100%;
+    }
 
 `;
 

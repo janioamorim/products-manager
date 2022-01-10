@@ -2,29 +2,46 @@
   "users": [
     {
       "name": "Janio Amorim",
-      "pass": "123",
-      "id": 1
-    },
-    {
-      "name": "Marcos Silva",
+      "user": "janioamorim",
       "pass": "123",
       "id": 2
     }
   ],
   "products": [
     {
-      "name": "teste1 ",
-      "packaging": "Vidro",
-      "price": "25,53",
-      "quantity": "45",
-      "id": 1
-    },
-    {
-      "name": "teste2 ",
+      "quantity": "0",
       "packaging": "Pacote",
       "price": "22,00",
-      "quantity": "0",
+      "name": "teste2 ",
       "id": 2
+    },
+    {
+      "quantity": 98,
+      "packaging": "Caixa",
+      "price": "25,53",
+      "name": "gfgfgf",
+      "id": 3
+    },
+    {
+      "name": "Janio",
+      "packaging": "Caixa",
+      "price": "25,53",
+      "quantity": "6",
+      "id": 4
+    },
+    {
+      "name": "teste 5",
+      "packaging": "Vidro",
+      "price": "25,30",
+      "quantity": "56",
+      "id": 5
+    },
+    {
+      "name": "outro teste",
+      "packaging": "Pacote",
+      "price": "25.5",
+      "quantity": "20",
+      "id": 6
     }
   ]
 }

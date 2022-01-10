@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import ContentHeader from '../../components/ContentHeader';
 import ProductCard from '../../components/ProductCard';
 
-import DataService from "../../services/products.service";
+import {productService} from "../../services/products.service";
 import { useHistory } from 'react-router-dom';
 
 import { 
@@ -10,6 +10,8 @@ import {
     Content
 } from './styles';
 import { ModalAlert } from '../../components/ModalAlert';
+import { usersService } from '../../services/user.service';
+import UsersCard from '../../components/UsersCard';
 
 interface IRouteParams {
     match: {
@@ -32,7 +34,8 @@ interface IProduct {
 interface IUsers {
     id: number
     name: string,
-    pass: string,        
+    user: string,
+    pass: string,      
 }
 
 
@@ -42,16 +45,17 @@ const List: React.FC<IRouteParams> = ({match, setModal}) => {
     const [users, setUsers] = useState<IUsers[]>([]);
     const history = useHistory();
     const [showModal, setShowModal] = useState(false);
-    const [idProduct, setIdProduct] = useState<number>(0);
+    const [idRegister, setIdRegister] = useState<number>(0);
 
     const getAllProducts = async () => {
-        const result = await DataService.getAllProducts();
-        setProducts(result.data);
+        const result = await productService.getAllProducts();
+        setProducts(result.data);       
+        
     };
 
     const getAllUsers = async () => {
-        const result = await DataService.getAllUsers();
-        setUsers(result.data);
+        const result = await usersService.getAllUsers();
+        setUsers(result.data);        
     };
     
 
@@ -59,13 +63,18 @@ const List: React.FC<IRouteParams> = ({match, setModal}) => {
 
     const openModal = (id: number) => {
         setShowModal(true);
-        setIdProduct(id)              
+        setIdRegister(id)              
 
     }
 
-    const deleteProduct = async () => {
-        const result = await DataService.deleteProduct(idProduct);
-        getAllProducts();
+    const deleteItem = async () => {
+        if(type === 'products'){
+            const result = await productService.deleteProduct(idRegister);
+            getAllProducts();
+        }else{
+            const result = await usersService.deleteUser(idRegister);
+            getAllUsers();
+        }
         setShowModal(false);
 
     }
@@ -93,7 +102,7 @@ const List: React.FC<IRouteParams> = ({match, setModal}) => {
     return (
         <Container>
             <ContentHeader title={pageData.title}/>           
-
+            {type === 'products' ? 
             <Content>
                 {products.map(item =>(
                     <ProductCard 
@@ -104,11 +113,18 @@ const List: React.FC<IRouteParams> = ({match, setModal}) => {
                     quantity={item.quantity}
                     onpressEdit={()=>editProduct(item.id)}
                     onpressDelete={()=>openModal(item.id)}/>
-                ))}
-                
+                ))}                
             </Content>
+            :
+            <Content>
+                {users.map(item =>(
+                        <UsersCard key={item.id} data={item} onpressDelete={()=>openModal(item.id)}/>
+                    ))}                
+            </Content>            
+        }
+
             {showModal ? 
-                <ModalAlert setShowModal={setShowModal} deleteProduct={()=>deleteProduct()}/>
+                <ModalAlert setShowModal={setShowModal} deleteProduct={()=>deleteItem()}/>
                 :
                 null
             }

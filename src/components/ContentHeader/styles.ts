@@ -11,6 +11,7 @@ export const TitleContainer = styled.div`
 
     > h1 {
         color: #FFF;
+        font-size: 30px;
 
         &::after {
             content: '';
@@ -19,14 +20,12 @@ export const TitleContainer = styled.div`
             border-bottom: 10px solid #FFF;
         }
     }
-
-
 `;
 
 export const LinkNovo = styled.a`
     text-decoration: none;
     color: #FFF;
-    background-color: #2a4c30;
+    background-color: #0484cf;
     padding: 15px;
     width: 150px;
     text-align: center;
@@ -36,5 +35,9 @@ export const LinkNovo = styled.a`
     }   
     svg{
         margin-right: 15px;
+    }
+
+    @media(max-width: 600px){
+        width: 125px;
     }
 `;

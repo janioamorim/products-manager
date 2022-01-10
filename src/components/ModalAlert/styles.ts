@@ -40,6 +40,12 @@ export const ModalWrapper = styled.div`
   position: relative;
   z-index: 10;
   border-radius: 10px;
+
+  @media(max-width: 600px){        
+    display: block;
+    right: 137px;
+    width: 300px;
+  }
   
 `;
 
@@ -86,5 +92,19 @@ export const ImgLeft = styled.div`
       width: 70px;
       height: 70px;
       fill: #ed1111;
+  }
+
+  @media(max-width: 600px){        
+    border-top-left-radius: 10px;    
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;  
+    display: flex;
+    justify-content: flex-start;
+    background-color: #14141499;
+    svg{
+      width: 70px;
+      height: 70px;
+      padding: 15px;
+    }
   }
 `;

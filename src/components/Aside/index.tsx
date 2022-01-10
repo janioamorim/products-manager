@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import logoImg from '../../assets/logo.svg';
+
+import { useAuth } from '../../providers/auth';
 
 import {
     ImHome,
     ImUsers,
     ImExit,
-    ImCart
+    ImCart,
+    ImCross,
+    ImMenu
 } from 'react-icons/im';
 
 import { 
@@ -17,20 +21,28 @@ import {
     MenuContainer,
     MenuItemLink,
     MenuItemButton,
+    ToggleMenu,
 }  from './styles';
 
 const Aside: React.FC = () => {
-
+    const [toggleMenuIsOpened, setToggleMenuIsOpened ] = useState(false);
+    const { signOut } = useAuth();
+    
+    const handleToggleMenu = () => {
+        setToggleMenuIsOpened(!toggleMenuIsOpened);
+    }
     return (
-        <Container>
+        <Container menuIsOpen={toggleMenuIsOpened}>
             <Header>
-
+                <ToggleMenu onClick={handleToggleMenu}>
+                    { toggleMenuIsOpened ? <ImCross /> : <ImMenu /> }
+                </ToggleMenu>
                 <LogImg src={logoImg} alt="Logo" />
                 <Title>Products Manager</Title>
             </Header>
 
             <MenuContainer>
-                <MenuItemLink href="/">
+                <MenuItemLink href="/home">
                     <ImHome />
                     Início
                 </MenuItemLink>
@@ -45,7 +57,7 @@ const Aside: React.FC = () => {
                     Usuários
                 </MenuItemLink>                
 
-                <MenuItemButton >
+                <MenuItemButton onClick={signOut}>
                     <ImExit />
                     Sair
                 </MenuItemButton>

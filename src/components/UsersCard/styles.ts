@@ -41,13 +41,6 @@ export const Container = styled.li`
         margin-right: 20px;
     } 
 
-    @media(max-width: 600px){        
-    > div 
-        > h3{
-            font-size: 15px;
-        } 
-    }
-
     
 `;
 
@@ -74,13 +67,19 @@ export const ContainerInfor = styled.div`
             font-size: 22px;
             font-weight: 500;
         }
-
-        @media(max-width: 600px){        
-            span {
-                font-size: 20px;               
-            }
-        }
         
+`;
+export const ColumnLeft = styled.div`
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    >svg{
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        fill: #05cbff;
+    }
 `;
 
 

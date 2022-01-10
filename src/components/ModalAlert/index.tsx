@@ -1,5 +1,5 @@
 
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { 
     Background, 
@@ -10,7 +10,6 @@ import {
 }  from './styles';
 
 import {
-    FaRegEdit,
     FaTrashAlt
 } from 'react-icons/fa';
 
@@ -33,7 +32,7 @@ export const ModalAlert:React.FC<IModal> = ({setShowModal, deleteProduct}) => {
                   </ImgLeft>
                 <ModalContent>
                   <h1>Alerta!</h1>
-                  <p>Você confirma que vai excluir o produto?</p>
+                  <p>Você confirma que vai excluir este registro?</p>
                   <button onClick={()=>deleteProduct()}>Sim</button>
                 </ModalContent>
                 <CloseModalButton                 
