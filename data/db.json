@@ -1,47 +1,59 @@
 {
   "users": [
     {
+      "id": 1,
+      "name": "Administrador",
+      "user": "admin",
+      "pass": "123"
+    },
+    {
+      "id": 2,
       "name": "Janio Amorim",
       "user": "janioamorim",
-      "pass": "123",
-      "id": 2
+      "pass": "123"
+    },
+    {
+      "id": 3,
+      "name": "Marcos Silva",
+      "user": "marcossilva",
+      "pass": "123"
     }
   ],
   "products": [
     {
-      "name": "teste2 ",
+      "name": "Margarinha",
       "packaging": "Pacote",
-      "price": "22,00",
-      "quantity": "0",
-      "id": 2
-    },
-    {
-      "quantity": 98,
-      "packaging": "Caixa",
-      "price": "25,53",
-      "name": "gfgfgf",
+      "price": "2,50",
+      "quantity": "120",
       "id": 3
     },
     {
-      "name": "Janio",
+      "name": "Notebook",
       "packaging": "Caixa",
-      "price": "25,53",
+      "price": "1.500,00",
       "quantity": "6",
       "id": 4
     },
     {
-      "name": "teste 5",
-      "packaging": "Vidro",
+      "name": "Mouse",
+      "packaging": "Caixa",
       "price": "25,30",
       "quantity": "56",
       "id": 5
     },
     {
-      "name": "outro teste",
-      "packaging": "Pacote",
-      "price": "25.5",
+      "name": "Celular iphone 12",
+      "packaging": "Caixa",
+      "price": "7.000,00",
       "quantity": "20",
       "id": 6
+    },
+    {
+      "name": "TV 40 p",
+      "packaging": "Caixa",
+      "price": "1.000,00",
+      "quantity": "20",
+      "id": 7
     }
   ]
 }

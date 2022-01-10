@@ -12,6 +12,7 @@ import {
 import { ModalAlert } from '../../components/ModalAlert';
 import { usersService } from '../../services/user.service';
 import UsersCard from '../../components/UsersCard';
+import { IProduct, IUsers } from '../../interfaces/interfaces.types';
 
 interface IRouteParams {
     match: {
@@ -22,22 +23,6 @@ interface IRouteParams {
     },
     setModal: any;
 }
-
-interface IProduct {
-    id: number
-    name: string,
-    price: string,
-    packaging: string,
-    quantity: number,        
-}
-
-interface IUsers {
-    id: number
-    name: string,
-    user: string,
-    pass: string,      
-}
-
 
 
 const List: React.FC<IRouteParams> = ({match, setModal}) => {
@@ -69,10 +54,10 @@ const List: React.FC<IRouteParams> = ({match, setModal}) => {
 
     const deleteItem = async () => {
         if(type === 'products'){
-            const result = await productService.deleteProduct(idRegister);
+            await productService.deleteProduct(idRegister);
             getAllProducts();
         }else{
-            const result = await usersService.deleteUser(idRegister);
+            await usersService.deleteUser(idRegister);
             getAllUsers();
         }
         setShowModal(false);

@@ -5,13 +5,26 @@ Para simulador as requisições à API foi utilizado a lib **json-server**
 
 
 ## Baixar as dependêcias
-### `yarn install`
 
-## Executar o server
+```bash
+yarn install
+```
 
-### `yarn server`
+## Executar o server (json-server)
+
+```bash
+yarn server
+```
 ## Iniciar projeto
-### `yarn start`
+
+```bash
+yarn start
+```
+**Login**
+
+Usuário: admin
+
+Senha: 123
 
 **URL browser**
 Abrir [http://localhost:3000](http://localhost:3000).
