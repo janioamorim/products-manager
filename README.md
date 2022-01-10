@@ -13,6 +13,10 @@ Para simulador as requisições à API foi utilizado a lib **json-server**
 ## Iniciar projeto
 ### `yarn start`
 
+**Login**
+Usuário: admin
+Senha: 123
+
 **URL browser**
 Abrir [http://localhost:3000](http://localhost:3000).
 

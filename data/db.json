@@ -1,10 +1,22 @@
 {
   "users": [
     {
+      "id": 1,
+      "name": "Administrador",
+      "user": "admin",
+      "pass": "123"
+    },
+    {
+      "id": 2,
       "name": "Janio Amorim",
       "user": "janioamorim",
-      "pass": "123",
-      "id": 2
+      "pass": "123"
+    },
+    {
+      "id": 3,
+      "name": "Marcos Silva",
+      "user": "marcossilva",
+      "pass": "123"
     }
   ],
   "products": [
